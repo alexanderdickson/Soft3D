@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soft3D</title>
+    <style type="text/css">
+    	body {
+			font-family: Helvetica, arial, sans-serif;
+    	}
+
+    	canvas {
+    		width: 400px;
+    		height: 400px;
+    		background: #000;
+    	}
+
+    	form {
+			width: 400px;
+    	}
+
+    	form fieldset {
+    		position: relative;
+    		border: none;
+    		padding-top: 30px;
+    		margin-top: 10px;
+    	}
+
+    	form fieldset legend {
+    		position: absolute;
+    		top: 0;
+    		left: 0;
+    		font-weight: bold;
+    	}
+
+    	form fieldset ol {
+    		list-style: none;
+    		padding: 0;
+    	}
+    </style>
+</head>
+<body>
+    <h1>Soft3D</h1>
+    <canvas width="400" height="400"></canvas>
+	<form>
+		<fieldset>
+			<legend>Rotation</legend>
+			<ol>
+				<li>
+					<label for="rotation-x">X</label>
+					<input type="range" id="rotation-x" min="0" max="6.2832" step=".01" value="0">
+				</li>
+				<li>
+					<label for="rotation-y">Y</label>
+					<input type="range" id="rotation-y" min="0" max="6.2832" step=".01" value="0">
+				</li>
+				<li>
+					<label for="rotation-z">Z</label>
+					<input type="range" id="rotation-z" min="0" max="6.2832" step=".01" value="0">
+				</li>								
+			</ol>
+		</fieldset>
+	</form>
+	<script src="/bundle.js"></script>
+</body>
+</html>
+

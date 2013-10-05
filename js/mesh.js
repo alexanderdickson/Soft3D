@@ -2,8 +2,8 @@
 	var Mesh = function Mesh(name, verticesCount) {
 		this.name = name
 		this.vertices = Array(verticesCount)
-		this.rotation = BABYLON.Vector3.Zero()
-		this.position = BABYLON.Vector3.Zero()
+		this.rotation = Soft3D.Util.Vector3.Zero()
+		this.position = Soft3D.Util.Vector3.Zero()
 	}
 
 	Mesh.prototype.addVertex = function(vector) {

@@ -1,8 +1,8 @@
 (function() {
 
 	var Camera = function Camera() {
-		this.position = Soft3D.Util.Vector3.Zero()
-		this.target = Soft3D.Util.Vector3.Zero()
+		this.position = BABYLON.Vector3.Zero()
+		this.target = BABYLON.Vector3.Zero()
 	}
 
 	Camera.prototype.setPosition = function(position) {

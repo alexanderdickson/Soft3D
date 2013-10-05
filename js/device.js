@@ -20,7 +20,10 @@
 	// Put pixel in back buffer at X and Y coordinates.
 	Device.prototype.putPixel = function(x, y, colour) {
 		var existingContextData = this.backBuffer.data
-		var index = (x + y * this.ctx.canvas.width) * 4
+		var index = null
+		x = Math.floor(x)
+		y = Math.floor(y)
+		index = (x + y * this.ctx.canvas.width) * 4
 		existingContextData[index] = colour.r * 255
 		existingContextData[index + 1] = colour.g * 255
 		existingContextData[index + 2] = colour.b * 255
@@ -28,32 +31,32 @@
 	}
 
 	Device.prototype.project = function(coords, transformationMatrix) {
-		var point = Soft3D.Util.Vector3.TransformCoordinates.apply(this, arguments)
+		var point = BABYLON.Vector3.TransformCoordinates.apply(this, arguments)
 		var x = point.x * this.ctx.canvas.width + this.ctx.canvas.width / 2
 		var y = point.y * this.ctx.canvas.height + this.ctx.canvas.height / 2
-		return new Soft3D.Util.Vector2(x, y)
+		return new BABYLON.Vector2(x, y)
 	}
 
 	Device.prototype.drawPoint = function(point) {
 		// Clip what's visible on screen.
 		if (point.x >= 0 && point.y >= 0 && point.x < this.ctx.canvas.width && point.y < this.ctx.canvas.height) {
-			this.putPixel(point.x, point.y, new Soft3D.Util.Colour4(1, 1, 0, 1))
+			this.putPixel(point.x, point.y, new BABYLON.Color4(1, 1, 0, 1))
 		}
 	}
 
 	Device.prototype.render = function(camera, meshes) {
-		var viewMatrix = Soft3D.Util.Matrix.LookAtLH(camera.getPosition(), camera.getTarget(), Soft3D.Util.Vector3.Up())
-		var projectionMatrix = Soft3D.Util.Matrix.PerspectiveFovLH(.78, this.ctx.canvas.width / this.ctx.canvas.height, .01, 1)
+		var viewMatrix = BABYLON.Matrix.LookAtLH(camera.getPosition(), camera.getTarget(), BABYLON.Vector3.Up())
+		var projectionMatrix = BABYLON.Matrix.PerspectiveFovLH(.78, this.ctx.canvas.width / this.ctx.canvas.height, .01, 1)
 		var project = this.project.bind(this)
 		var drawPoint = this.drawPoint.bind(this)
 
 		meshes.forEach(function(mesh) {
 			var meshRotation = mesh.getRotation()
 			var meshPosition = mesh.getPosition()
-			var worldMatrix = Soft3D.Util.Matrix.RotationYawPitchRoll(
+			var worldMatrix = BABYLON.Matrix.RotationYawPitchRoll(
 				meshRotation.y, meshRotation.x, meshRotation.z
 				)
-				.multiply(Soft3D.Util.Matrix.Translation(
+				.multiply(BABYLON.Matrix.Translation(
 					meshPosition.x, meshPosition.y, meshPosition.z
 					))
 

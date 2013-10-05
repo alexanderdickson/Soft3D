@@ -1,0 +1,24 @@
+{
+  "name": "Soft3D",
+  "version": "0.0.0",
+  "description": "Soft3D",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexanderdickson/Soft3D.git"
+  },
+  "author": "Alex Dickson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexanderdickson/Soft3D/issues"
+  },
+  "dependencies": {
+    "raf": "0.0.3"
+  },
+  "devDependencies": {
+    "beefy": "0.4.4"
+  }
+}
